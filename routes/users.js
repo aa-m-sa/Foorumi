@@ -33,6 +33,7 @@ router.post('/', function(req, res, next){
 router.post('/authenticate', function(req, res, next){
   // Tarkista käyttäjän kirjautuminen tässä. Tee se katsomalla, löytyykö käyttäjää annetulla käyttäjätunnuksella ja salasanalla (Vinkki: findOne ja sopiva where)
   var userToCheck = req.body;
+  console.log('auth', userToCheck);
   if(userToCheck == null || userToCheck.username == null || userToCheck.password == null){
     res.send(403);
   }
@@ -44,9 +45,10 @@ router.post('/authenticate', function(req, res, next){
     }
   }).then(function(user){
     if(user){
+      console.log('got here');
       req.session.userId = user.id;
-      res.json(user)
-    }else{
+      res.json(user);
+    } else {
       res.send(403);
     }
   });

@@ -5,13 +5,17 @@
 <form>
   <div class="form-group">
     <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" ng-model="userToLogin.username">
   </div>
 
   <div class="form-group">
     <label>Salasana</label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" ng-model="userToLogin.password">
   </div>
 
-  <button class="btn btn-primary">Kirjaudu sisään</button>
+  <button class="btn btn-primary" ng-click="login()">Kirjaudu sisään</button>
+
+  <div ng-show="errorMessage">
+    {{errorMessage}}
+  </div>
 </form>
