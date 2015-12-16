@@ -10,7 +10,7 @@ var Models = require('../models');
 router.get('/:id', function(req, res, next) {
   // Hae viesti tällä id:llä ja siihen liittyvät vastaukset tässä (Vinkki: findOne ja sopiva include)
   var messageId = req.params.id;
-  Models.Message.findAll({
+  Models.Message.findOne({
     where: {id: messageId},
     include: [Models.Reply]
   })
