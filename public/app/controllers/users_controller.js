@@ -1,12 +1,16 @@
 FoorumApp.controller('UsersController', function($scope, $location, Api){
   // Toteuta kontrolleri tähän
   $scope.errorMessage = null;
-  $scope.userToLogin = {username: "", password: ""};
-  var obj = {
-    username: $scope.userToLogin.username,
-    password: $scope.userToLogin.password
-  };
-  $scope.login = function () {Api.login(obj)
+  $scope.userToLogin = {}
+  $scope.userToLogin.username = "";
+  $scope.userToLogin.password ="";
+
+  $scope.login = function () {
+    var obj = {
+      username: $scope.userToLogin.username,
+      password: $scope.userToLogin.password
+    };
+    Api.login(obj)
     .success(function(user){
       console.log('Kirjautuminen onnistui!');
       $scope.errorMessage = null;

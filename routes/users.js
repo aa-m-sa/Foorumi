@@ -36,6 +36,7 @@ router.post('/authenticate', function(req, res, next){
   console.log('auth', userToCheck);
   if(userToCheck == null || userToCheck.username == null || userToCheck.password == null){
     res.send(403);
+    return;
   }
 
   Models.User.findOne({
